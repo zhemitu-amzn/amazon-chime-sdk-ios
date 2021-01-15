@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C4DF54BE25B209BB00657FAE"
-               BuildableName = "AmazonChimeSDK-xcframework.framework"
+               BuildableName = "AmazonChimeSDK.framework"
                BlueprintName = "AmazonChimeSDK-xcframework"
                ReferencedContainer = "container:AmazonChimeSDK.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C4DF54BE25B209BB00657FAE"
-            BuildableName = "AmazonChimeSDK-xcframework.framework"
+            BuildableName = "AmazonChimeSDK.framework"
             BlueprintName = "AmazonChimeSDK-xcframework"
             ReferencedContainer = "container:AmazonChimeSDK.xcodeproj">
          </BuildableReference>
