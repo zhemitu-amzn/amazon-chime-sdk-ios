@@ -1932,7 +1932,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "AmazonChimeSDK copy-Info.plist";
+				INFOPLIST_FILE = AmazonChimeSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1989,7 +1989,7 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "AmazonChimeSDK copy-Info.plist";
+				INFOPLIST_FILE = AmazonChimeSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
