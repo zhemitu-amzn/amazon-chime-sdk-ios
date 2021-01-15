@@ -448,7 +448,6 @@
 		C4A6F9CC252F718200455418 /* VideoRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRotation.swift; sourceTree = "<group>"; };
 		C4C540652538C08D00427A84 /* VideoCaptureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureFormat.swift; sourceTree = "<group>"; };
 		C4DF553925B209BB00657FAE /* AmazonChimeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AmazonChimeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4DF553A25B209BB00657FAE /* AmazonChimeSDK copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AmazonChimeSDK copy-Info.plist"; path = "/Volumes/workplace/chime/sdk/amazon-chime-sdk-ios/AmazonChimeSDK/AmazonChimeSDK copy-Info.plist"; sourceTree = "<absolute>"; };
 		C4DF553E25B209F000657FAE /* AmazonChimeSDKMedia.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AmazonChimeSDKMedia.xcframework; sourceTree = "<group>"; };
 		C4EDDAAB253F46FF0028264A /* VideoCaptureFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureFormatTests.swift; sourceTree = "<group>"; };
 		C4EDDAAF253F4C4B0028264A /* CaptureSourceErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSourceErrorTests.swift; sourceTree = "<group>"; };
@@ -554,7 +553,6 @@
 				5A15821E23C4020D0099F8FA /* Products */,
 				5A1582A023C403120099F8FA /* Frameworks */,
 				B2624DE0EEE7B7B1BCEB6407 /* Generated Mocks */,
-				C4DF553A25B209BB00657FAE /* AmazonChimeSDK copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
