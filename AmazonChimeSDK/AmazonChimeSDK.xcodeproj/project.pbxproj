@@ -447,7 +447,7 @@
 		C4A6F9C3252E686700455418 /* VideoContentHint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoContentHint.swift; sourceTree = "<group>"; };
 		C4A6F9CC252F718200455418 /* VideoRotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoRotation.swift; sourceTree = "<group>"; };
 		C4C540652538C08D00427A84 /* VideoCaptureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureFormat.swift; sourceTree = "<group>"; };
-		C4DF553925B209BB00657FAE /* AmazonChimeSDK-xcframework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "AmazonChimeSDK-xcframework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4DF553925B209BB00657FAE /* AmazonChimeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AmazonChimeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DF553A25B209BB00657FAE /* AmazonChimeSDK copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AmazonChimeSDK copy-Info.plist"; path = "/Volumes/workplace/chime/sdk/amazon-chime-sdk-ios/AmazonChimeSDK/AmazonChimeSDK copy-Info.plist"; sourceTree = "<absolute>"; };
 		C4DF553E25B209F000657FAE /* AmazonChimeSDKMedia.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AmazonChimeSDKMedia.xcframework; sourceTree = "<group>"; };
 		C4EDDAAB253F46FF0028264A /* VideoCaptureFormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureFormatTests.swift; sourceTree = "<group>"; };
@@ -563,7 +563,7 @@
 			children = (
 				5A15821D23C4020D0099F8FA /* AmazonChimeSDK.framework */,
 				5A15822623C4020D0099F8FA /* AmazonChimeSDKTests.xctest */,
-				C4DF553925B209BB00657FAE /* AmazonChimeSDK-xcframework.framework */,
+				C4DF553925B209BB00657FAE /* AmazonChimeSDK.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1120,7 +1120,7 @@
 			);
 			name = "AmazonChimeSDK-xcframework";
 			productName = AmazonChimeSDK;
-			productReference = C4DF553925B209BB00657FAE /* AmazonChimeSDK-xcframework.framework */;
+			productReference = C4DF553925B209BB00657FAE /* AmazonChimeSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1950,7 +1950,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.services.chime.AmazonChimeSDK;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = AmazonChimeSDK;
+				PRODUCT_NAME = AmazonChimeSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2007,7 +2008,8 @@
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.services.chime.AmazonChimeSDK;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = AmazonChimeSDK;
+				PRODUCT_NAME = AmazonChimeSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_VERSION = 5.0;
