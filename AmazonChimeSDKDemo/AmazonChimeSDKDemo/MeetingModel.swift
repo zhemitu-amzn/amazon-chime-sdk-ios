@@ -94,6 +94,10 @@ class MeetingModel: NSObject {
 
     private var isEnded = false {
         didSet {
+            // This will unbind current tiles.
+            videoModel.isEnded = true
+            videoModel.isLocalVideoActive = false
+            currentMeetingSession.audioVideo.stopRemoteVideo()
             currentMeetingSession.audioVideo.stop()
             screenShareModel.stopLocalSharing()
             videoModel.customSource.stop()

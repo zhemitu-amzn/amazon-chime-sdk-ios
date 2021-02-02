@@ -19,6 +19,7 @@ import Foundation
     let activeSpeakerDetector: ActiveSpeakerDetectorFacade
     let contentShareController: ContentShareController
     let eventAnalyticsController: EventAnalyticsController
+    let audioClientObserver: AudioClientObserver
 
     public init(
         audioVideoController: AudioVideoControllerFacade,
@@ -26,6 +27,7 @@ import Foundation
         deviceController: DeviceController,
         videoTileController: VideoTileController,
         activeSpeakerDetector: ActiveSpeakerDetectorFacade,
+        audioClientObserver: AudioClientObserver,
         contentShareController: ContentShareController,
         eventAnalyticsController: EventAnalyticsController,
         meetingStatsCollector: MeetingStatsCollector
@@ -39,10 +41,15 @@ import Foundation
         self.activeSpeakerDetector = activeSpeakerDetector
         self.contentShareController = contentShareController
         self.eventAnalyticsController = eventAnalyticsController
+        self.audioClientObserver = audioClientObserver
     }
 
     public func start(callKitEnabled: Bool = false) throws {
+        if let observer = activeSpeakerDetector as? RealtimeObserver {
+            audioClientObserver.subscribeToRealTimeEvents(observer: observer)
+        }
         try audioVideoController.start(callKitEnabled: callKitEnabled)
+
         trace(name: "start(callKitEnabled: \(callKitEnabled))")
     }
 
@@ -52,6 +59,9 @@ import Foundation
 
     public func stop() {
         audioVideoController.stop()
+        if let observer = activeSpeakerDetector as? RealtimeObserver {
+            audioClientObserver.unsubscribeFromRealTimeEvents(observer: observer)
+        }
         trace(name: "stop")
     }
 

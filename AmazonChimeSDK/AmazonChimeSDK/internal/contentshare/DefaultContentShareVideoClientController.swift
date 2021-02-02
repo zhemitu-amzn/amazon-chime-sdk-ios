@@ -36,15 +36,16 @@ import Foundation
         self.clientMetricsCollector = clientMetricsCollector
         self.videoClient = videoClient
         super.init()
-        videoClient.delegate = self
         videoClient.setReceiving(false)
     }
+
 
     public func startVideoShare(source: VideoSource) {
         videoClientLock.lock()
         defer { videoClientLock.unlock() }
 
         if !isSharing {
+            videoClient.delegate = self
             startVideoClient()
         }
         videoSourceAdapter.source = source
@@ -123,6 +124,11 @@ extension DefaultContentShareVideoClientController: VideoClientDelegate {
             observer.contentShareDidStop(status: ContentShareStatus(statusCode: .videoServiceFailed))
         }
         isSharing = false
+        dispose()
+    }
+    
+    private func dispose() {
+        videoClient.delegate = nil
     }
 
     public func videoClientDidStop(_ client: VideoClient?) {
@@ -132,6 +138,7 @@ extension DefaultContentShareVideoClientController: VideoClientDelegate {
             observer.contentShareDidStop(status: ContentShareStatus(statusCode: .ok))
         }
         isSharing = false
+        dispose()
     }
 
     public func videoClientMetricsReceived(_ metrics: [AnyHashable: Any]?) {

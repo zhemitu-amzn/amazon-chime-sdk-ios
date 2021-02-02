@@ -54,13 +54,11 @@ import Foundation
             DefaultVideoTileController(videoClientController: videoClientController,
                                        logger: logger,
                                        meetingStatsCollector: meetingStatsCollector)
-        videoClientController.subscribeToVideoTileControllerObservers(observer: videoTileController)
         let realtimeController = DefaultRealtimeController(audioClientController: audioClientController,
                                                            audioClientObserver: audioClientObserver,
                                                            videoClientController: videoClientController)
         let activeSpeakerDetector =
-            DefaultActiveSpeakerDetector(audioClientObserver: audioClientObserver,
-                                         selfAttendeeId: configuration.credentials.attendeeId)
+            DefaultActiveSpeakerDetector(selfAttendeeId: configuration.credentials.attendeeId)
 
         let contentModality = String(DefaultModality.separator) + String(describing: ModalityType.content)
         let contentShareCredentials = MeetingSessionCredentials(
@@ -85,6 +83,7 @@ import Foundation
                                             audioClientObserver: audioClientObserver,
                                             clientMetricsCollector: clientMetricsCollector,
                                             videoClientController: videoClientController,
+                                            videoTileController: videoTileController,
                                             configuration: configuration,
                                             logger: logger),
                                     realtimeController: realtimeController,
@@ -95,6 +94,7 @@ import Foundation
                                         logger: logger),
                                     videoTileController: videoTileController,
                                     activeSpeakerDetector: activeSpeakerDetector,
+                                    audioClientObserver: audioClientObserver,
                                     contentShareController: contentShareController,
                                     eventAnalyticsController: self.eventAnalyticsController,
                                     meetingStatsCollector: meetingStatsCollector)

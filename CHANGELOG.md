@@ -16,6 +16,10 @@
   * **Breaking** Changed to take `EventAnalyticsController` as an additional parameter of `DefaultAudioVideoFacade` constructor.
 ## Fixed
 * Fixed data message conversion that sometimes does not handle null terminator when converting from string to c-string. (Issue #217)
+* Attempt to fix memory leaks in the SDK layer.
+  * **Breaking** `DefaultAudioVideoFacade` takes additional parameter of `AudioClientObserver` and `DefaultAudioVideoController` takes additional parameter of `VideoTileController`.
+  * [Demo] Demo application is updated to remove observer or sink it adds.
+  * `DefaultActiveSpeaker` does not take `AudioClientObserver` as a parameter.
 
 ## [0.14.0] - 2021-01-21
 
