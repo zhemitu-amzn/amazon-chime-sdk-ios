@@ -270,7 +270,7 @@
 
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         if (httpResponse.statusCode < 200 || httpResponse.statusCode > 299) {
-            [self showAlertIn:self withMessage:[NSString stringWithFormat:@"Received status code %ld", (long)httpResponse.statusCode] withDelay:0];
+            [self showAlertIn:self withMessage:[NSString stringWithFormat:@"Unable to join meeting please try different meeting ID: statusCode %ld", (long)httpResponse.statusCode] withDelay:0];
             completion(nil,
                        [NSError errorWithDomain:@"AmazonChimeSDKDemoObjC"
                                            code:httpResponse.statusCode
