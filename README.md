@@ -70,9 +70,11 @@ To run the demo application, follow these steps.
 
 ### 1. Clone the Git repo and get the branch
 
-`git clone git@github.com:aws/amazon-chime-sdk-ios.git`
-`cd amazon-chime-sdk-ios`
-`git checkout 0.16.3.7.12-build`
+```
+git clone git@github.com:aws/amazon-chime-sdk-ios.git
+cd amazon-chime-sdk-ios
+git checkout 0.16.3.7.12-build
+```
 
 ### 2. Download binary
 
