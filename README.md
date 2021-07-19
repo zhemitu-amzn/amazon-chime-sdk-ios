@@ -1,4 +1,4 @@
-# Amazon Chime SDK for iOS
+# Amazon Chime SDK for iOS 0.16.3.7.12-build
 
 > Note: If building with the SDK source code, the `development` branch contains bleeding-edge changes that may not build with the publically available Chime media library or may not be as stable as [public releases](https://github.com/aws/amazon-chime-sdk-ios/releases).
 
@@ -41,7 +41,9 @@ For the purpose of setup, your project's root folder (where you can find your `.
 
 ### 1. Download binaries
 
-Download the `AmazonChimeSDK` and `AmazonChimeSDKMedia` binaries from the latest [release](https://github.com/aws/amazon-chime-sdk-ios/releases/latest).
+Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/AmazonChimeSDK%20with%20Bitcode%200.16.3.7.12.tar.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/AmazonChimeSDKMedia%20with%20Bitcode%200.11.4.7.12.tar.gz) binaries.
+
+Non-Bitcode versions are also available: [`AmazonChimeSDK without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/AmazonChimeSDK%20without%20Bitcode%200.16.3.7.12.tar.gz)  [`AmazonChimeSDKMedia without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/AmazonChimeSDKMedia%20without%20Bitcode%200.11.4.7.12.tar.gz)
 
 Unzip and copy the `.framework`s or `.xcframework`s to `root`.
 
@@ -66,15 +68,17 @@ In `Build Settings` tab, under `Linking` section, add the following two flags in
 
 To run the demo application, follow these steps.
 
-### 1. Clone the Git repo
+### 1. Clone the Git repo and get the branch
 
 `git clone git@github.com:aws/amazon-chime-sdk-ios.git`
+`cd amazon-chime-sdk-ios`
+`git checkout 0.16.3.7.12-build`
 
 ### 2. Download binary
 
-Download `AmazonChimeSDKMedia` binary with bitcode support from the latest [release](https://github.com/aws/amazon-chime-sdk-ios/releases/latest).
+Download [`AmazonChimeSDKMedia`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/AmazonChimeSDKMedia%20with%20Bitcode%200.11.4.7.12.tar.gz) binary with bitcode support.
 
-Unzip and copy the `AmazonChimeSDKMedia.framework` to `AmazonChimeSDK` folder.
+Unzip and copy the `AmazonChimeSDKMedia.framework` or `AmazonChimeSDKMedia.xcframework` to `AmazonChimeSDK` folder.
 
 ### 3. Deploy serverless demo
 
