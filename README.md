@@ -6,19 +6,17 @@
 ## Build video calling, audio calling, and screen sharing applications powered by Amazon Chime.
 
 The Amazon Chime SDK for iOS makes it easy to add collaborative audio calling,
-video calling, and screen share viewing features to iOS applications by
-using the same infrastructure services that power meetings on the Amazon
+video calling, and screen share viewing features to iOS applications by 
+using the same infrastructure services that power meetings on the Amazon 
 Chime service.
 
 This Amazon Chime SDK for iOS works by connecting to meeting session
 resources that you have created in your AWS account. The SDK has everything
 you need to build custom calling and collaboration experiences in your
-iOS application, including methods to: configure meeting sessions, list
-and select audio devices, switch video devices, start and stop screen share
-viewing, receive callbacks when media events occur such as volume changes,
+iOS application, including methods to: configure meeting sessions, list 
+and select audio devices, switch video devices, start and stop screen share 
+viewing, receive callbacks when media events occur such as volume changes, 
 and manage meeting features such as audio mute and video tile bindings.
-
-We also have an [Amazon Chime SDK Project Board](https://aws.github.io/amazon-chime-sdk-js/modules/projectboard.html) where you can find community requests and their statuses.
 
 To get started, see the following resources:
 
@@ -30,7 +28,6 @@ To get started, see the following resources:
 And review the following guides:
 * [API Overview](guides/api_overview.md)
 * [Getting Started](guides/getting_started.md)
-* [Frequently Asked Questions (FAQ)](#frequently-asked-questions)
 * [Custom Video Sources, Processors, and Sinks](guides/custom_video.md)
 * [Video Pagination with Active Speaker-Based Policy](guides/video_pagination.md)
 * [Content Share](guides/content_share.md)
@@ -45,7 +42,9 @@ For the purpose of setup, your project's root folder (where you can find your `.
 
 ### 1. Download binaries
 
-Download the `AmazonChimeSDK` and `AmazonChimeSDKMedia` binaries from the latest [release](https://github.com/aws/amazon-chime-sdk-ios/releases/latest).
+Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDK_0.16.4.8.31.tar.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia.0.12.0.8.31tar.gz) binaries.
+
+Non-Bitcode versions are also available: [`AmazonChimeSDK without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDK_NoBitcode_0.16.4.8.31.tar.gz)  [`AmazonChimeSDKMedia without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia_NoBitcode_0.12.0.8.31.tar.gz)
 
 Unzip and copy the `.framework`s or `.xcframework`s to `root`.
 
@@ -70,15 +69,19 @@ In `Build Settings` tab, under `Linking` section, add the following two flags in
 
 To run the demo application, follow these steps.
 
-### 1. Clone the Git repo
+### 1. Clone the Git repo and get the branch
 
-`git clone git@github.com:aws/amazon-chime-sdk-ios.git`
+```
+git clone git@github.com:zhemitu-amzn/amazon-chime-sdk-ios.git
+cd amazon-chime-sdk-ios
+git checkout 0.16.4.8.31
+```
 
 ### 2. Download binary
 
-Download `AmazonChimeSDKMedia` binary with bitcode support from the latest [release](https://github.com/aws/amazon-chime-sdk-ios/releases/latest).
+Download [`AmazonChimeSDKMedia`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia.0.12.0.8.31tar.gz) binary with bitcode support.
 
-Unzip and copy the `AmazonChimeSDKMedia.framework` to `AmazonChimeSDK` folder.
+Unzip and copy the `AmazonChimeSDKMedia.framework` or `AmazonChimeSDKMedia.xcframework` to `AmazonChimeSDK` folder.
 
 ### 3. Deploy serverless demo
 
@@ -112,7 +115,7 @@ If you discover a potential security issue in this project we ask that you notif
 
 ### Starting a session
 
-#### Use case 1. Start a session.
+#### Use case 1. Start a session. 
 
 You need to start the meeting session to start sending and receiving audio. Make sure that the user has granted audio permission first.
 
@@ -120,7 +123,7 @@ You need to start the meeting session to start sending and receiving audio. Make
 meetingSession.audioVideo.start()
 ```
 
-#### Use case 2. Add an observer to receive audio and video session life cycle events.
+#### Use case 2. Add an observer to receive audio and video session life cycle events. 
 
 > Note: To avoid missing any events, add an observer before the session starts. You can remove the observer by calling meetingSession.audioVideo.removeAudioVideoObserver(observer).
 
@@ -148,7 +151,7 @@ class MyAudioVideoObserver: AudioVideoObserver {
         // Can use video APIs.
     }
     func videoSessionDidStopWithStatus(sessionStatus: MeetingSessionStatus) {}
-
+    
     meetingSession.audioVideo.addAudioVideoObserver(observer: self)
 }
 ```
@@ -201,7 +204,7 @@ class MyDeviceChangeObserver: DeviceChangeObserver {
             logger.info(msg: "Device type: \(device.type), label: \(device.label)")
         }    
     }
-
+    
     meetingSession.audioVideo.addDeviceChangeObserver(observer: self)
 }
 ```
@@ -224,9 +227,9 @@ let muted = meetingSession.audioVideo.realtimeLocalMute() // returns true if mut
 let unmuted = meetingSession.audioVideo.realtimeLocalUnmute // returns true if unmuted, false if failed
 ```
 
-#### Use case 9. Add an observer to observe realtime events such as volume changes/signal change/muted status of a specific attendee.
+#### Use case 9. Add an observer to observe realtime events such as volume changes/signal change/muted status of a specific attendee. 
 
-You can use this to build real-time indicators UI and get them updated for changes delivered by the array.
+You can use this to build real-time indicators UI and get them updated for changes delivered by the array. 
 
 > Note: These callbacks will only include the delta from the previous callback.
 
@@ -269,7 +272,7 @@ class MyRealtimeObserver: RealtimeObserver {
             logger.info(msg: "\(currentAttendeeInfo.attendeeId) unmuted")
         }
     }
-
+    
     meetingSession.audioVideo.addRealtimeObserver(observer: self)
 }
 ```
@@ -281,11 +284,11 @@ You can use the `activeSpeakerDidDetect` event to enlarge or emphasize the most 
 ```swift
 class MyActiveSpeakerObserver: ActiveSpeakerObserver {
     let activeSpeakerObserverId = UUID().uuidString
-
+    
     var observerId: String {
         return activeSpeakerObserverId
     }
-
+    
     func activeSpeakerDidDetect(attendeeInfo: [AttendeeInfo]) {
         if !attendeeInfo.isEmpty {
             logger.info(msg: "\(attendeeInfo[0].attendeeId) is the most active speaker")
@@ -303,7 +306,7 @@ class MyActiveSpeakerObserver: ActiveSpeakerObserver {
        }.joined(separator: ",")
        logger.info(msg: "Scores of active speakers are: \(scoresInString)")
     }
-
+    
     // Calculating the active speaker base on the SDK provided policy, you can provide any custom algorithm
     meetingSession.audioVideo.addActiveSpeakerObserver(policy: DefaultActiveSpeakerPolicy(), observer: self)
 }
@@ -312,18 +315,18 @@ class MyActiveSpeakerObserver: ActiveSpeakerObserver {
 ### Video
 
 > Note: You will need to bind the video to `VideoRenderView` in order to display the video.
->
+> 
 > A local video tile can be identified using `isLocalTile` property.
->
+> 
 > A content video tile can be identified using `isContent` property. See [Screen and content share](#screen-and-content-share).
->
+> 
 > A tile is created with a new tile ID when the same remote attendee restarts the video.
 
 
 
 You can find more details on adding/removing/viewing video from [Building a meeting application on ios using the Amazon Chime SDK](https://aws.amazon.com/blogs/business-productivity/building-a-meeting-application-on-ios-using-the-amazon-chime-sdk/).
 
-#### Use case 11. Start receiving remote video.
+#### Use case 11. Start receiving remote video. 
 
 You can call `startRemoteVideo` to start receiving remote videos, as this doesn’t happen by default.
 
@@ -348,21 +351,21 @@ class MyVideoTileObserver: VideoTileObserver {
         if tileState.isLocalTile || tileState.isContent {
             return
         }
-
+       
        let videoRenderView = /* a VideoRenderView object in your application to show the video */
        meetingSession.audioVideo.bind(videoView: videoRenderView, tileId: tileState.tileId)
     }
-
+    
     func videoTileDidRemove(tileState: VideoTileState) {
         // unbind video view to stop viewing the tile
         meetingSession.audioVideo.unbindVideoView(tileId: tileState.tileId)
     }
-
+    
    meetingSession.audioVideo.addVideoTileObserver(observer: self)
 }
 ```
 
-#### Use case 14. Start sharing your video.
+#### Use case 14. Start sharing your video. 
 
 ```swift
 // Use internal camera capture for the local video
@@ -393,12 +396,12 @@ class MyVideoTileObserver: VideoTileObserver {
             }
         }
     }
-
+    
     func videoTileDidRemove(tileState: VideoTileState) {
         // unbind video view to stop viewing the tile
         meetingSession.audioVideo.unbindVideoView(tileId: tileState.tileId)
     }
-
+    
     meetingSession.audioVideo.addVideoTileObserver(observer: self)
 }
 ```
@@ -408,7 +411,7 @@ For more advanced video tile management, take a look at  [Video Pagination](http
 ### Screen and content share
 
 > Note: When you or other attendees share content (e.g. screen capture or any other VideoSource object), the content attendee (attendee-id#content) joins the session and shares content as if a regular attendee shares a video.
->
+> 
 > For example, your attendee ID is "my-id". When you call `meetingSession.audioVideo.startContentShare`, the content attendee "my-id#content" will join the session and share your content.
 
 #### Use case 17. Start sharing your screen or content.
@@ -418,11 +421,11 @@ class MyContentShareObserver: ContentShareObserver {
     func contentShareDidStart() {
         logger.info(msg: "Content Share has started")
     }
-
+    
     func contentShareDidStop(status: ContentShareStatus){
         logger.info(msg: "Content Share has stopped")
     }
-
+    
     meetingSession.audioVideo.addContentShareObserver(observer: self)
     let contentShareSource = /* a ContentShareSource object, can use InAppScreenCaptureSource for screen share or any subclass with custom video source */
     // ContentShareSource object is not managed by SDK, builders need to start, stop, release accordingly
@@ -442,7 +445,7 @@ meetingSession.audioVideo.stopContentShare()
 Chime SDK allows two simultaneous content shares per meeting. Remote content shares will trigger `onVideoTileAdded`, while local share will not. To render the video for preview, add a `VideoSink` to the `VideoSource` in the `ContentShareSource`.
 
 ```swift
-class MyVideoTileObserver: VideoTileObserver {
+class MyVideoTileObserver: VideoTileObserver { 
     func videoTileDidAdd(tileState: VideoTileState) {
         if (tileState.isContent) {
             // tileState.attendeeId is formatted as "attendee-id#content"
@@ -459,7 +462,7 @@ class MyVideoTileObserver: VideoTileObserver {
     func videoTileDidRemove(tileState: VideoTileState) {
         meetingSession.audioVideo.unbindVideoView(tileId: tileState.tileId)
     }
-
+    
     meetingSession.audioVideo.addVideoTileObserver(observer: self)
 }
 ```
@@ -475,7 +478,7 @@ class MyMetricsObserver: MetricsObserver {
     func metricsDidReceive(metrics: [AnyHashable: Any]) {
         logger.info(msg: "Media metrics have been received: \(metrics)")
     }
-
+    
     meetingSession.audioVideo.addMetricsObserver(observer: self)
 }
 ```
@@ -493,7 +496,7 @@ class MyDataMessageObserver: DataMessageObserver {
     func dataMessageDidReceived(dataMessage: DataMessage) {
         logger.info(msg: "\(dataMessage.timestampMs) \(dataMessage.text()) \(dataMessage.senderAttendeeId)")
     }
-
+    
     // You can also subscribe to multiple topics.
     meetingSession.audioVideo.addRealtimeDataMessageObserver(topic: dataMessageTopic, observer: self)
 }
@@ -535,7 +538,7 @@ class MyAudioVideoObserver: AudioVideoObserver {
         // This is where meeting ended.
         // You can do some clean up work here.
     }
-
+    
     func videoSessionDidStopWithStatus(sessionStatus: MeetingSessionStatus) {
         // This will be invoked as well.
     }
@@ -560,19 +563,6 @@ val disabled = audioVideo.realtimeSetVoiceFocusEnabled(false) // disabling Amazo
 ### Custom Video Source
 
 Custom video source allows you to control the video, such as applying a video filter. For more details, see [Custom Video](https://github.com/aws/amazon-chime-sdk-ios/blob/master/guides/custom_video.md).
-
-
-## Frequently Asked Questions
-
-Refer to [General FAQ](https://aws.github.io/amazon-chime-sdk-js/modules/faqs.html) for Amazon Chime SDK.
-
-### Debugging
-
-#### How can I get Amazon Chime SDK logs for debugging?
-Applications can get logs from Chime SDK by passing instances of Logger when creating [MeetingSession](https://aws.github.io/amazon-chime-sdk-ios/Protocols/MeetingSession.html). Amazon Chime SDK has some default implementations of logger that your application can use, such as [ConsoleLogger](https://aws.github.io/amazon-chime-sdk-ios/Classes/ConsoleLogger.html) which logs into console. `ConsoleLogger` is set to `INFO` level as default. Therefore, in order to get all logs, including media logs, create logger by following:
-```swift
-logger = ConsoleLogger(name: "logger", level: .DEFAULT)
-```
 
 
 ---
