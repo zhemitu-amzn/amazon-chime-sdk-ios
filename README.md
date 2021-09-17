@@ -1,4 +1,4 @@
-# Amazon Chime SDK for iOS Incremental Release 0.16.4.8.31
+# Amazon Chime SDK for iOS Incremental Release 0.16.4.9.17
 [Amazon Chime SDK Project Board](https://aws.github.io/amazon-chime-sdk-js/modules/projectboard.html)
 
 > Note: If building with the SDK source code, the `development` branch contains bleeding-edge changes that may not build with the publically available Chime media library or may not be as stable as [public releases](https://github.com/aws/amazon-chime-sdk-ios/releases).
