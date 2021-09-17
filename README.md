@@ -42,9 +42,9 @@ For the purpose of setup, your project's root folder (where you can find your `.
 
 ### 1. Download binaries
 
-Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDK_0.16.4.8.31.tar.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia.0.12.0.8.31tar.gz) binaries.
+Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210917/sdk_0.16.4.9.17.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210917/sdk_media_0.16.4.9.17.gz) binaries.
 
-Non-Bitcode versions are also available: [`AmazonChimeSDK without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDK_NoBitcode_0.16.4.8.31.tar.gz)  [`AmazonChimeSDKMedia without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia_NoBitcode_0.12.0.8.31.tar.gz)
+Non-Bitcode versions are also available: [`AmazonChimeSDK without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210917/sdk_no_bitcode_0.16.4.9.17.gz)  [`AmazonChimeSDKMedia without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210917/sdk_media_no_bitcode_0.16.4.9.17.gz)
 
 Unzip and copy the `.framework`s or `.xcframework`s to `root`.
 
@@ -77,9 +77,9 @@ cd amazon-chime-sdk-ios
 git checkout 0.16.4.8.31
 ```
 
-### 2. Download binary
+### 2. Copy binaries
 
-Download [`AmazonChimeSDKMedia`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20210831/iosChimeSDKMedia.0.12.0.8.31tar.gz) binary with bitcode support.
+Copy downloaded binaries to corresponding folders.
 
 Unzip and copy the `AmazonChimeSDKMedia.framework` or `AmazonChimeSDKMedia.xcframework` to `AmazonChimeSDK` folder.
 
