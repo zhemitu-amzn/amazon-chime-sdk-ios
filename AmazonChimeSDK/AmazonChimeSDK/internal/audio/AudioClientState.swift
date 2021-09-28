@@ -24,17 +24,3 @@ import Foundation
         }
     }
 }
-
-@objc enum AudioMode: Int32 {
-    case noaudio = 0
-    case mono16k = 1
-
-    var description: String {
-        switch self {
-        case .noaudio:
-            return "noaudio"
-        case .mono16k:
-            return "mono16k"
-        }
-    }
-}

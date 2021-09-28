@@ -17,7 +17,7 @@ class DefaultAudioClientController: NSObject {
     private let audioClientObserver: AudioClientObserver
     private let audioSession: AudioSession
     private let audioPortOffset = 200
-    private let muteMicAndSpeaker = false
+    private let defaultMicAndSpeaker = false
     private let defaultPort = 0
     private let defaultPresenter = true
     private let eventAnalyticsController: EventAnalyticsController
@@ -52,26 +52,6 @@ extension DefaultAudioClientController: AudioClientController {
         } else {
             return false
         }
-    }
-
-    // start function with AudioMode specified
-    public func start(audioFallbackUrl: String,
-                      audioHostUrl: String,
-                      meetingId: String,
-                      attendeeId: String,
-                      joinToken: String,
-                      callKitEnabled: Bool,
-                      audioMode: AudioMode) throws {
-        if audioMode == .noaudio {
-            muteMicAndSpeaker = true
-        }
-
-        start(audioFallbackUrl: audioFallbackUrl,
-              audioHostUrl: audioHostUrl,
-              meetingId: meetingId,
-              attendeeId: attendeeId,
-              joinToken: joinToken,
-              callKitEnabled: callKitEnabled)
     }
 
     public func start(audioFallbackUrl: String,
@@ -113,8 +93,8 @@ extension DefaultAudioClientController: AudioClientController {
                                               basePort: port,
                                               callId: meetingId,
                                               profileId: attendeeId,
-                                              microphoneMute: muteMicAndSpeaker,
-                                              speakerMute: muteMicAndSpeaker,
+                                              microphoneMute: defaultMicAndSpeaker,
+                                              speakerMute: defaultMicAndSpeaker,
                                               isPresenter: defaultPresenter,
                                               sessionToken: joinToken,
                                               audioWsUrl: audioFallbackUrl,
