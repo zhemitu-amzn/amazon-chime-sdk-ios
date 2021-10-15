@@ -1,3 +1,17 @@
+## [0.16.6] - 2021-10-14
+
+### Fixed
+* Fixed an issue where sending a ByteArray through data message fails
+
+## [0.16.5] - 2021-09-30
+
+## Changed
+* Exposed torch availability 
+
+### Fixed
+* Fixed an issue where audio session is stopped when switch between bluetooth device and speaker.
+* Fixed an issue on iOS 15 where `DefaultDeviceController` returns a duplicate entry for bluetooth audio device in `listAudioDevices()`.
+
 ## [0.16.4] - 2021-07-21
 ### Removed
 * **Breaking (internal APIs)** Removed unused and incorrect `isDeviceFrontFacing` and `setFrontCameraAsCurrentDevice` from internal `VideoClientController`.  Removed internal `VideoDevice` constructors for `MediaDevice`.
