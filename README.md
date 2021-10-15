@@ -74,7 +74,7 @@ To run the demo application, follow these steps.
 ```
 git clone git@github.com:zhemitu-amzn/amazon-chime-sdk-ios.git
 cd amazon-chime-sdk-ios
-git checkout 0.16.4.8.31
+git checkout 0.16.5.10.14
 ```
 
 ### 2. Copy binaries
