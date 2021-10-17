@@ -42,7 +42,7 @@ For the purpose of setup, your project's root folder (where you can find your `.
 
 ### 1. Download binaries
 
-Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDK%200.16.5.10.14.tar.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDKMedia%200.12.1.10.17.tar.gz) binaries.
+Download the [`AmazonChimeSDK with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDK%200.16.5.10.14.tar.gz) and [`AmazonChimeSDKMedia with Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDKMedia.0.12.1.10.17.tar.gz) binaries.
 
 Non-Bitcode versions are also available: [`AmazonChimeSDK without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDK_noBitcode%200.16.5.10.14.tar.gz)  [`AmazonChimeSDKMedia without Bitcode`](https://drive.corp.amazon.com/documents/zhemitu@/public/Chime%20SDK%20Private%20Releases/20211014/ChimeSDKMedia_NoBitcode_0.12.1.10.17.tar.gz)
 
