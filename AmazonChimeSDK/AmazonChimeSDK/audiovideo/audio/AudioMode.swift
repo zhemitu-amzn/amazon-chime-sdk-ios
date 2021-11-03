@@ -13,15 +13,25 @@ import Foundation
     /// There will be no audio through mic and speaker
     case noAudio = 0
 
-    /// The default audio mode with single audio channel
-    case mono = 1
+    /// The mono audio mode with single audio channel and 16KHz
+    case mono16K = 1
+
+    /// The mono audio mode with single audio channel and 48KHz
+    case mono48K = 2
+
+    /// The stereo audio mode with two audio channels and 48KHz
+    case stereo48K = 3
 
     public var description: String {
         switch self {
         case .noAudio:
             return "noAudio"
-        case .mono:
-            return "mono"
+        case .mono16K:
+            return "mono16K"
+        case .mono48K:
+            return "mono48K"
+        case .stereo48K:
+            return "stereo48K"
         }
     }
 }

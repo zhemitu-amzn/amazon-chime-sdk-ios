@@ -12,15 +12,27 @@ import XCTest
 class AudioVideoConfigurationTests: XCTestCase {
     func testDefaultConfigurations() {
         let audioVideoConfig = AudioVideoConfiguration()
-        XCTAssertEqual(audioVideoConfig.audioMode, .mono)
+        XCTAssertEqual(audioVideoConfig.audioMode, .stereo48K)
         XCTAssertEqual(audioVideoConfig.callKitEnabled, false)
 
-        let audioVideoConfigAudioMode = AudioVideoConfiguration(audioMode: .noAudio)
-        XCTAssertEqual(audioVideoConfigAudioMode.audioMode, .noAudio)
+        let audioVideoConfigAudioMode = AudioVideoConfiguration(audioMode: .stereo48K)
+        XCTAssertEqual(audioVideoConfigAudioMode.audioMode, .stereo48K)
         XCTAssertEqual(audioVideoConfigAudioMode.callKitEnabled, false)
 
+        let audioVideoConfigAudioModeMono48K = AudioVideoConfiguration(audioMode: .mono48K)
+        XCTAssertEqual(audioVideoConfigAudioModeMono48K.audioMode, .mono48K)
+        XCTAssertEqual(audioVideoConfigAudioModeMono48K.callKitEnabled, false)
+
+        let audioVideoConfigAudioModeMono16K = AudioVideoConfiguration(audioMode: .mono16K)
+        XCTAssertEqual(audioVideoConfigAudioModeMono16K.audioMode, .mono16K)
+        XCTAssertEqual(audioVideoConfigAudioModeMono16K.callKitEnabled, false)
+
+        let audioVideoConfigAudioModeNoAudio = AudioVideoConfiguration(audioMode: .noAudio)
+        XCTAssertEqual(audioVideoConfigAudioModeNoAudio.audioMode, .noAudio)
+        XCTAssertEqual(audioVideoConfigAudioModeNoAudio.callKitEnabled, false)
+
         let audioVideoConfigCallkit = AudioVideoConfiguration(callKitEnabled: true)
-        XCTAssertEqual(audioVideoConfigCallkit.audioMode, .mono)
+        XCTAssertEqual(audioVideoConfigCallkit.audioMode, .stereo48K)
         XCTAssertEqual(audioVideoConfigCallkit.callKitEnabled, true)
     }
 }

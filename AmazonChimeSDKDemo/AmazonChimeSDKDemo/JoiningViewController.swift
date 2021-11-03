@@ -16,11 +16,12 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var versionLabel: UILabel!
     @IBOutlet var callKitOptionsPicker: UIPickerView!
-    @IBOutlet var audioSwitch: UISwitch!
+    @IBOutlet var audioModeOptionsPicker: UIPickerView!
     @IBOutlet var joinButton: UIButton!
     @IBOutlet var debugSettingsButton: UIButton!
 
     var callKitOptions = ["Don't use CallKit", "CallKit as Incoming in 10s", "CallKit as Outgoing"]
+    var audioModeOptions = ["Stereo/48KHz Audio", "Mono/48KHz Audio", "Mono/16KHz Audio", "No Audio"]
 
     private let toastDisplayDuration = 2.0
     private let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -33,6 +34,9 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
 
         callKitOptionsPicker.delegate = self
         callKitOptionsPicker.dataSource = self
+
+        audioModeOptionsPicker.delegate = self
+        audioModeOptionsPicker.dataSource = self
 
         setupHideKeyboardOnTap()
         versionLabel.text = "amazon-chime-sdk-ios@\(Versioning.sdkVersion())"
@@ -58,9 +62,16 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
         }
 
         // Audio Mode
-        var audioMode: AudioMode = .mono
-        if !audioSwitch.isOn {
+        var audioMode: AudioMode = .stereo48K
+        switch audioModeOptionsPicker.selectedRow(inComponent: 0) {
+        case 1:
+            audioMode = .mono48K
+        case 2:
+            audioMode = .mono16K
+        case 3:
             audioMode = .noAudio
+        default:
+            audioMode = .stereo48K
         }
 
         joinMeeting(audioVideoConfig: AudioVideoConfiguration(audioMode: audioMode, callKitEnabled: callKitOption != .disabled),
@@ -114,10 +125,19 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
 
 extension JoiningViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent _: Int) -> String? {
-        if row >= callKitOptions.count {
+        if pickerView == callKitOptionsPicker {
+            if row >= callKitOptions.count {
+                return nil
+            }
+            return callKitOptions[row]
+        } else if pickerView == audioModeOptionsPicker {
+            if row >= audioModeOptions.count {
+                return nil
+            }
+            return audioModeOptions[row]
+        } else {
             return nil
         }
-        return callKitOptions[row]
     }
 }
 
@@ -127,6 +147,12 @@ extension JoiningViewController: UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent _: Int) -> Int {
-        return callKitOptions.count
+        if pickerView == callKitOptionsPicker {
+            return callKitOptions.count
+        } else if pickerView == audioModeOptionsPicker {
+            return audioModeOptions.count
+        } else {
+            return 0
+        }
     }
 }
