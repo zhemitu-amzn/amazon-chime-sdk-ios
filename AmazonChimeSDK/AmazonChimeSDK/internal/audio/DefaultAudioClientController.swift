@@ -99,6 +99,14 @@ extension DefaultAudioClientController: AudioClientController {
         eventAnalyticsController.publishEvent(name: .meetingStartRequested)
         let appInfo = DeviceUtils.getAppInfo()
         muteMicAndSpeaker = audioMode == .noAudio
+        var audioModeNative: AudioModeNative = .Stereo48K
+        if (audioMode == .mono48K) {
+            audioModeNative = .Mono48K
+        } else if (audioMode == .mono16K) {
+            audioModeNative = .Mono16K
+        } else if (audioMode == .noAudio) {
+            audioModeNative = .NoAudio
+        }
         let status = audioClient.startSession(host,
                                               basePort: port,
                                               callId: meetingId,
@@ -109,7 +117,8 @@ extension DefaultAudioClientController: AudioClientController {
                                               sessionToken: joinToken,
                                               audioWsUrl: audioFallbackUrl,
                                               callKitEnabled: callKitEnabled,
-                                              appInfo: appInfo)
+                                              appInfo: appInfo,
+                                              audioMode: audioModeNative)
 
         if status == AUDIO_CLIENT_OK {
             Self.state = .started

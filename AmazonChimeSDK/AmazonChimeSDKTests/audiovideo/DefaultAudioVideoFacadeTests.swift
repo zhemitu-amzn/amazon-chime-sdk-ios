@@ -50,7 +50,7 @@ class DefaultAudioVideoFacadeTests: CommonTestCase {
     }
 
     func testStart_WithConfigArgs() {
-        let audioVideoConfiguration = AudioVideoConfiguration(audioMode: .noAudio, callKitEnabled: true)
+        let audioVideoConfiguration = AudioVideoConfiguration(audioMode: .mono48K, callKitEnabled: true)
         given(audioVideoControllerMock.start(audioVideoConfiguration: any())).willReturn()
 
         XCTAssertNoThrow(try defaultAudioVideoFacade.start(audioVideoConfiguration: audioVideoConfiguration))
@@ -63,7 +63,7 @@ class DefaultAudioVideoFacadeTests: CommonTestCase {
 
         XCTAssertNoThrow(try defaultAudioVideoFacade.start(callKitEnabled: true))
 
-        verify(audioVideoControllerMock.start(audioVideoConfiguration: any(where: { $0.audioMode == .mono && $0.callKitEnabled == true }))).wasCalled()
+        verify(audioVideoControllerMock.start(audioVideoConfiguration: any(where: { $0.audioMode == .stereo48K && $0.callKitEnabled == true }))).wasCalled()
     }
 
     func testStart_WithNoArgs() {
@@ -71,6 +71,6 @@ class DefaultAudioVideoFacadeTests: CommonTestCase {
 
         XCTAssertNoThrow(try defaultAudioVideoFacade.start())
 
-        verify(audioVideoControllerMock.start(audioVideoConfiguration: any(where: { $0.audioMode == .mono && $0.callKitEnabled == false }))).wasCalled()
+        verify(audioVideoControllerMock.start(audioVideoConfiguration: any(where: { $0.audioMode == .stereo48K && $0.callKitEnabled == false }))).wasCalled()
     }
 }
