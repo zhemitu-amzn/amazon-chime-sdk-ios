@@ -35,7 +35,7 @@ import Foundation
                       audioWsUrl: String!,
                       callKitEnabled: Bool,
                       appInfo: AppInfo!,
-                      audioMode: AudioModeNative) -> audio_client_status_t
+                      audioMode: AudioModeInternal) -> audio_client_status_t
 
     func startSession(_ host: String!,
                       basePort port: Int,
