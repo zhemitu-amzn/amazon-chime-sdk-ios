@@ -99,7 +99,7 @@ extension DefaultAudioClientController: AudioClientController {
         eventAnalyticsController.publishEvent(name: .meetingStartRequested)
         let appInfo = DeviceUtils.getAppInfo()
         muteMicAndSpeaker = audioMode == .noAudio
-        var audioModeNative: AudioModeNative = .Stereo48K
+        var audioModeNative: AudioModeInternal = .Stereo48K
         if (audioMode == .mono48K) {
             audioModeNative = .Mono48K
         } else if (audioMode == .mono16K) {
