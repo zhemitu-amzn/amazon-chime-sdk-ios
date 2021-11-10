@@ -38,6 +38,20 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
         given(meetingStatsCollectorMock.getMeetingStats()).will { [AnyHashable: Any]() }
 
+        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
+        given(audioClientMock.startSession(any(),
+                                           basePort: any(),
+                                           callId: any(),
+                                           profileId: any(),
+                                           microphoneMute: any(),
+                                           speakerMute: any(),
+                                           isPresenter: any(),
+                                           sessionToken: any(),
+                                           audioWsUrl: any(),
+                                           callKitEnabled: any(),
+                                           appInfo: any(),
+                                           audioMode: any())).willReturn(AUDIO_CLIENT_OK)
+
         defaultAudioClientController = DefaultAudioClientController(audioClient: audioClientMock,
                                                                     audioClientObserver: audioClientObserverMock,
                                                                     audioSession: audioSessionMock,
@@ -108,19 +122,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
     func testStart_startedOk() {
         DefaultAudioClientController.state = .initialized
-        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
-        given(audioClientMock.startSession(any(),
-                                           basePort: any(),
-                                           callId: any(),
-                                           profileId: any(),
-                                           microphoneMute: any(),
-                                           speakerMute: any(),
-                                           isPresenter: any(),
-                                           sessionToken: any(),
-                                           audioWsUrl: any(),
-                                           callKitEnabled: any(),
-                                           appInfo: any(),
-                                           audioMode: any())).willReturn(AUDIO_CLIENT_OK)
 
         XCTAssertNoThrow(try defaultAudioClientController.start(audioFallbackUrl: audioFallbackUrl,
                                                                 audioHostUrl: audioHostUrlWithPort,
@@ -150,19 +151,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
     func testStartWithMono48K_startedOk() {
         DefaultAudioClientController.state = .initialized
-        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
-        given(audioClientMock.startSession(any(),
-                                           basePort: any(),
-                                           callId: any(),
-                                           profileId: any(),
-                                           microphoneMute: any(),
-                                           speakerMute: any(),
-                                           isPresenter: any(),
-                                           sessionToken: any(),
-                                           audioWsUrl: any(),
-                                           callKitEnabled: any(),
-                                           appInfo: any(),
-                                           audioMode: any())).willReturn(AUDIO_CLIENT_OK)
 
         XCTAssertNoThrow(try defaultAudioClientController.start(audioFallbackUrl: audioFallbackUrl,
                                                                 audioHostUrl: audioHostUrlWithPort,
@@ -192,19 +180,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
     func testStartWithMono16K_startedOk() {
         DefaultAudioClientController.state = .initialized
-        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
-        given(audioClientMock.startSession(any(),
-                                           basePort: any(),
-                                           callId: any(),
-                                           profileId: any(),
-                                           microphoneMute: any(),
-                                           speakerMute: any(),
-                                           isPresenter: any(),
-                                           sessionToken: any(),
-                                           audioWsUrl: any(),
-                                           callKitEnabled: any(),
-                                           appInfo: any(),
-                                           audioMode: any())).willReturn(AUDIO_CLIENT_OK)
 
         XCTAssertNoThrow(try defaultAudioClientController.start(audioFallbackUrl: audioFallbackUrl,
                                                                 audioHostUrl: audioHostUrlWithPort,
@@ -234,19 +209,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
     func testStartWithNoAudio_startedOk() {
         DefaultAudioClientController.state = .initialized
-        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
-        given(audioClientMock.startSession(any(),
-                                           basePort: any(),
-                                           callId: any(),
-                                           profileId: any(),
-                                           microphoneMute: any(),
-                                           speakerMute: any(),
-                                           isPresenter: any(),
-                                           sessionToken: any(),
-                                           audioWsUrl: any(),
-                                           callKitEnabled: any(),
-                                           appInfo: any(),
-                                           audioMode: any())).willReturn(AUDIO_CLIENT_OK)
 
         XCTAssertNoThrow(try defaultAudioClientController.start(audioFallbackUrl: audioFallbackUrl,
                                                                 audioHostUrl: audioHostUrlWithPort,
@@ -276,7 +238,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
 
     func testStart_failedToStart() {
         DefaultAudioClientController.state = .initialized
-        given(audioSessionMock.getRecordPermission()).willReturn(.granted)
         given(audioClientMock.startSession(any(),
                                            basePort: any(),
                                            callId: any(),

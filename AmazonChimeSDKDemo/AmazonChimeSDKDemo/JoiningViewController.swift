@@ -49,30 +49,14 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func joinButton(_: UIButton) {
         // CallKit Option
-        var callKitOption: CallKitOption = .disabled
-        switch callKitOptionsPicker.selectedRow(inComponent: 0) {
-        case 1:
-            callKitOption = .incoming
+        let callKitOption = getSelectedCallKitOption()
+        if (callKitOption == .incoming) {
             view.makeToast("You can background the app or lock screen while waiting",
                            duration: incomingCallKitDelayInSeconds)
-        case 2:
-            callKitOption = .outgoing
-        default:
-            callKitOption = .disabled
         }
 
         // Audio Mode
-        var audioMode: AudioMode = .stereo48K
-        switch audioModeOptionsPicker.selectedRow(inComponent: 0) {
-        case 1:
-            audioMode = .mono48K
-        case 2:
-            audioMode = .mono16K
-        case 3:
-            audioMode = .noAudio
-        default:
-            audioMode = .stereo48K
-        }
+        let audioMode = getSelectedAudioMode()
 
         joinMeeting(audioVideoConfig: AudioVideoConfiguration(audioMode: audioMode, callKitEnabled: callKitOption != .disabled),
                     callKitOption: callKitOption
@@ -92,6 +76,30 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    func getSelectedCallKitOption() -> CallKitOption {
+        switch callKitOptionsPicker.selectedRow(inComponent: 0) {
+        case 1:
+            return .incoming
+        case 2:
+            return .outgoing
+        default:
+            return .disabled
+        }
+    }
+
+    func getSelectedAudioMode() -> AudioMode {
+        switch audioModeOptionsPicker.selectedRow(inComponent: 0) {
+        case 1:
+            return .mono48K
+        case 2:
+            return .mono16K
+        case 3:
+            return .noAudio
+        default:
+            return .stereo48K
+        }
     }
 
     func joinMeeting(audioVideoConfig: AudioVideoConfiguration, callKitOption: CallKitOption) {

@@ -1412,7 +1412,7 @@
 			files = (
 			);
 			inputPaths = (
-				"/tmp/Mockingbird-77A0DDE8-21D8-4190-9F7F-FE72495E6ED5",
+				"/tmp/Mockingbird-843A55A6-F172-40F8-AD36-AE309CDDCACD",
 			);
 			name = "Generate Mockingbird Mocks";
 			outputPaths = (
@@ -1420,7 +1420,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nmockingbird generate \\\n  --targets 'AmazonChimeSDK' \\\n  --outputs \"${SRCROOT}/MockingbirdMocks/AmazonChimeSDKTests-AmazonChimeSDKMocks.generated.swift\" \\\n  --support \"${SRCROOT}/MockingbirdSupport\"\n\n# Ensure mocks are generated prior to running Compile Sources\nrm -f '/tmp/Mockingbird-77A0DDE8-21D8-4190-9F7F-FE72495E6ED5'\n";
+			shellScript = "set -e\n\nmockingbird generate \\\n  --targets 'AmazonChimeSDK' \\\n  --outputs \"${SRCROOT}/MockingbirdMocks/AmazonChimeSDKTests-AmazonChimeSDKMocks.generated.swift\" \\\n  --support \"${SRCROOT}/MockingbirdSupport\"\n\n# Ensure mocks are generated prior to running Compile Sources\nrm -f '/tmp/Mockingbird-843A55A6-F172-40F8-AD36-AE309CDDCACD'\n";
 		};
 		114854BF06996650440AB080 /* Clean Mockingbird Mocks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1431,11 +1431,11 @@
 			);
 			name = "Clean Mockingbird Mocks";
 			outputPaths = (
-				"/tmp/Mockingbird-77A0DDE8-21D8-4190-9F7F-FE72495E6ED5",
+				"/tmp/Mockingbird-843A55A6-F172-40F8-AD36-AE309CDDCACD",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo $RANDOM > '/tmp/Mockingbird-77A0DDE8-21D8-4190-9F7F-FE72495E6ED5'\n";
+			shellScript = "echo $RANDOM > '/tmp/Mockingbird-843A55A6-F172-40F8-AD36-AE309CDDCACD'\n";
 		};
 		5A3CFC6423C52B5D00BB63B7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
