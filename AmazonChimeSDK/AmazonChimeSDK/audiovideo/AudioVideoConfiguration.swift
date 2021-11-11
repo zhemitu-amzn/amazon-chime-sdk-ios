@@ -14,7 +14,7 @@ import Foundation
     public let callKitEnabled: Bool
 
     convenience override public init() {
-        self.init(audioMode: .mono, callKitEnabled: false)
+        self.init(audioMode: .stereo48K, callKitEnabled: false)
     }
 
     convenience public init(audioMode: AudioMode) {
@@ -22,7 +22,7 @@ import Foundation
     }
 
     convenience public init(callKitEnabled: Bool) {
-        self.init(audioMode: .mono, callKitEnabled: callKitEnabled)
+        self.init(audioMode: .stereo48K, callKitEnabled: callKitEnabled)
     }
 
     public init(audioMode: AudioMode, callKitEnabled: Bool) {
