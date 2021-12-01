@@ -467,13 +467,9 @@ extension MeetingModel: RealtimeObserver {
                 let newAttendee = RosterAttendee(attendeeId: attendeeId,
                                                  attendeeName: attendeeName,
                                                  volume: .notSpeaking,
-                                                 signal: .high,
-                                                 attendeeStatus: status)
+                                                 signal: .high)
                 newAttendees.append(newAttendee)
                 var action = "Joined"
-                if status == .joinedNoAudio {
-                    action = "JoinedNoAudio"
-                }
                 logger.info(msg: "attendeeId:\(currentAttendeeInfo.attendeeId) externalUserId:\(currentAttendeeInfo.externalUserId) \(action)")
 
                 // if other attendee starts sharing content, stop content sharing from current device
@@ -535,10 +531,6 @@ extension MeetingModel: RealtimeObserver {
 
     func attendeesDidJoin(attendeeInfo: [AttendeeInfo]) {
         attendeesDidJoinWithStatus(attendeeInfo: attendeeInfo, status: AttendeeStatus.joined)
-    }
-
-    func attendeesDidJoinWithoutAudio(attendeeInfo: [AttendeeInfo]) {
-        attendeesDidJoinWithStatus(attendeeInfo: attendeeInfo, status: AttendeeStatus.joinedNoAudio)
     }
 }
 
