@@ -29,9 +29,6 @@ class DeviceSelectionViewController: UIViewController {
         videoFormatPicker.delegate = self
         videoFormatPicker.dataSource = self
 
-        /// Update the visibility of Audio Device selection based on the audio mode
-        updateAudioState(audioEnabled: model?.audioVideoConfig.audioMode != .noAudio)
-
         videoPreviewImageView.mirror = model?.shouldMirrorPreview ?? false
         model?.cameraCaptureSource.addVideoSink(sink: videoPreviewImageView)
         model?.cameraCaptureSource.start()
@@ -44,11 +41,6 @@ class DeviceSelectionViewController: UIViewController {
         model.cameraCaptureSource.stop()
         model.cameraCaptureSource.removeVideoSink(sink: videoPreviewImageView)
         MeetingModule.shared().deviceSelected(model)
-    }
-
-    private func updateAudioState(audioEnabled: Bool) {
-        audioDeviceLabel.isHidden = !audioEnabled
-        audioDevicePicker.isHidden = !audioEnabled
     }
 }
 

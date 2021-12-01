@@ -180,17 +180,6 @@ class DefaultAudioClientObserver: NSObject, AudioClientDelegate {
             }
         }
 
-        if let attendeesWithJoinedWithoutAudioStatus = newAttendeeMap[AttendeeStatus.joinedNoAudio] {
-            let attendeesJoinedWithoutAudio = attendeesWithJoinedWithoutAudioStatus.subtracting(currentAttendeeSet)
-            logger.info(msg: "attendeesJoinedWithoutAudio: \(attendeesJoinedWithoutAudio)")
-            if !attendeesJoinedWithoutAudio.isEmpty {
-                ObserverUtils.forEach(observers: realtimeObservers) { (observer: RealtimeObserver) in
-                    observer.attendeesDidJoinWithoutAudio?(attendeeInfo: [AttendeeInfo](attendeesJoinedWithoutAudio))
-                }
-                currentAttendeeSet = currentAttendeeSet.union(attendeesJoinedWithoutAudio)
-            }
-        }
-
         if let attendeesWithLeftStatus = newAttendeeMap[AttendeeStatus.left] {
             if !attendeesWithLeftStatus.isEmpty {
                 logger.info(msg: "attendeesLeft: \(attendeesWithLeftStatus)")

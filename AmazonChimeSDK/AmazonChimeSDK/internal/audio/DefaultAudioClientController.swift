@@ -17,7 +17,7 @@ class DefaultAudioClientController: NSObject {
     private let audioClientObserver: AudioClientObserver
     private let audioSession: AudioSession
     private let audioPortOffset = 200
-    private var muteMicAndSpeaker = false
+    private let muteMicAndSpeaker = false
     private let defaultPort = 0
     private let defaultPresenter = true
     private let eventAnalyticsController: EventAnalyticsController
@@ -98,14 +98,11 @@ extension DefaultAudioClientController: AudioClientController {
         }
         eventAnalyticsController.publishEvent(name: .meetingStartRequested)
         let appInfo = DeviceUtils.getAppInfo()
-        muteMicAndSpeaker = audioMode == .noAudio
         var audioModeInternal: AudioModeInternal = .Stereo48K
         if (audioMode == .mono48K) {
             audioModeInternal = .Mono48K
         } else if (audioMode == .mono16K) {
             audioModeInternal = .Mono16K
-        } else if (audioMode == .noAudio) {
-            audioModeInternal = .NoAudio
         }
         let status = audioClient.startSession(host,
                                               basePort: port,

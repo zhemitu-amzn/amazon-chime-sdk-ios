@@ -207,35 +207,6 @@ class DefaultAudioClientControllerTests: CommonTestCase {
         verify(audioLockMock.unlock()).wasCalled()
     }
 
-    func testStartWithNoAudio_startedOk() {
-        DefaultAudioClientController.state = .initialized
-
-        XCTAssertNoThrow(try defaultAudioClientController.start(audioFallbackUrl: audioFallbackUrl,
-                                                                audioHostUrl: audioHostUrlWithPort,
-                                                                meetingId: meetingId,
-                                                                attendeeId: attendeeId,
-                                                                joinToken: joinToken,
-                                                                callKitEnabled: callKitEnabled,
-                                                                audioMode: .noAudio))
-        verify(audioLockMock.lock()).wasCalled()
-        verify(audioClientObserverMock.notifyAudioClientObserver(observerFunction: any())).wasCalled()
-        verify(audioClientMock.startSession(self.audioHostUrl,
-                                            basePort: 1820,
-                                            callId: self.meetingId,
-                                            profileId: self.attendeeId,
-                                            microphoneMute: true,
-                                            speakerMute: true,
-                                            isPresenter: true,
-                                            sessionToken: self.joinToken,
-                                            audioWsUrl: self.audioFallbackUrl,
-                                            callKitEnabled: false,
-                                            appInfo: any(),
-                                            audioMode: .NoAudio)).wasCalled()
-        verify(eventAnalyticsControllerMock.publishEvent(name: .meetingStartRequested)).wasCalled()
-        XCTAssertEqual(.started, DefaultAudioClientController.state)
-        verify(audioLockMock.unlock()).wasCalled()
-    }
-
     func testStart_failedToStart() {
         DefaultAudioClientController.state = .initialized
         given(audioClientMock.startSession(any(),
